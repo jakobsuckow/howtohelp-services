@@ -1,0 +1,36 @@
+version: "3.3"
+services:
+  howtohelp-backend:
+    container_name: howtohelp-backend
+    environment:
+      - NODE_ENV=production
+    restart: "always"
+    image: howtohelp
+    ports:
+      - 5000:5000
+    networks:
+      - howtohelp-net
+    volumes:
+      - "./src:/app/src"
+    build: .
+    command: ["yarn", "run", "start"]
+
+  howtohelp-postgres:
+    container_name: howtohelp-postgres
+    image: postgis/postgis:12-3.0
+    environment:
+      - POSTGRES_USER=howtohelp
+      - POSTGRES_PASSWORD=howtohelp
+    logging:
+      driver: none
+    restart: "always"
+    ports:
+      - 5432
+    labels:
+      traefik.enable: "false"
+    networks:
+      - howtohelp-net
+
+networks:
+  howtohelp-net:
+    driver: bridge

@@ -1,0 +1,28 @@
+name: "Validation"
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches:
+      - main
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout code
+      - name: Checkout source code
+        uses: actions/checkout@v1
+      # setup node
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.16.1"
+      # cache yarn packages
+      - name: Restore Yarn cache
+        uses: c-hive/gha-yarn-cache@v1
+      # install packages and build application
+      - name: Install dependencies via Yarn
+        run: yarn install
+      # run validation tests
+      - name: Validate application
+        run: yarn install
