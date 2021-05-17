@@ -13,7 +13,7 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.enableCors({
-    origin: ["http://localhost:3000", "http://howtohelp.guide"],
+    origin: ["http://localhost:3000", "https://howtohelp.guide"],
     credentials: true,
   });
   app.useGlobalPipes(new ValidationPipe());
