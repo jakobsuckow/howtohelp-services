@@ -24,9 +24,8 @@ async function bootstrap() {
       .addBearerAuth()
       .addBasicAuth()
       .setDescription("Documentation for How to Help")
-      .setContact("Jakob Suckow", "", "jakob.suckow94@googlemail.com")
       .setTitle("How to help")
-      .setVersion("1.0.0")
+      .setVersion("1.0.1")
       .build();
     app.use(
       "/docs",
