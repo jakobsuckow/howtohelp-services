@@ -8,6 +8,7 @@ import { AuthMiddleware } from "./auth.middleware";
 import { TwilioService } from "../twilio/twilio.service";
 import { LoggerModule } from "../logger/logger.module";
 import { MessageModule } from "../message/message.module";
+import { CryptoService } from "../crypto/crypto.service";
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { MessageModule } from "../message/message.module";
     forwardRef(() => PinModule),
     forwardRef(() => MessageModule),
   ],
-  providers: [UserService, TwilioService],
+  providers: [UserService, TwilioService, CryptoService],
   exports: [UserService],
   controllers: [UserController],
 })

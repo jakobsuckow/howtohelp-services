@@ -1,5 +1,4 @@
 import {
-  AfterInsert,
   BaseEntity,
   Column,
   CreateDateColumn,
@@ -7,7 +6,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { LoggerService } from "../logger/logger.service";
 import { UserEntity } from "../user/user.entity";
 
 @Entity("message")

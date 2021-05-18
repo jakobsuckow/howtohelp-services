@@ -8,7 +8,6 @@ import {
   Post,
   Put,
   Query,
-  UseGuards,
   UsePipes,
   ValidationPipe,
 } from "@nestjs/common";
@@ -123,7 +122,6 @@ export class PinController {
   @Put("approve/:id")
   @Roles(Role.Admin)
   async approvePin(@User() user: UserEntity, @Param("id") id: string): Promise<PinEntity> {
-
     if (user.roles.includes(Role.Admin)) {
       return await this.pinService.approve(id);
     } else {

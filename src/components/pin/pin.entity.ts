@@ -11,8 +11,6 @@ import {
 } from "typeorm";
 import { UserEntity } from "../user/user.entity";
 
-//https://github.com/typeorm/typeorm/blob/master/docs/listeners-and-subscribers.md
-
 export class GeoJSON {
   type: string;
   coordinates: number[];

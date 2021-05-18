@@ -1,25 +1,16 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform } from "class-transformer";
-import { IsEmail, IsNotEmpty, MaxLength } from "class-validator";
+import { IsEmail, MaxLength } from "class-validator";
 
-// export class CreateUserDto {
-//   @ApiProperty({ example: "jakob.suckow94@googlemail.com" })
-//   @IsEmail()
-//   email: string;
-
-//   @ApiProperty({ example: "Jakob" })
-//   @IsNotEmpty()
-//   name: string;
-// }
 export class EmailDto {
-  @ApiProperty({ example: "jakob.suckow94@googlemail.com" })
+  @ApiProperty({ example: "exampe@email.com" })
   @Transform((o: any) => o.toLowerCase().trim())
   @IsEmail()
   email: string;
 }
 
 export class VerificationDto {
-  @ApiProperty({ example: "jakob.suckow94@googlemail.com" })
+  @ApiProperty({ example: "exampe@email.com" })
   @Transform((o: any) => o.toLowerCase().trim())
   @IsEmail()
   email: string;

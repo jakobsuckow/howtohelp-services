@@ -6,10 +6,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { MessageEntity } from "./message.entity";
 import { UserEntity } from "../user/user.entity";
 import { AuthMiddleware } from "../user/auth.middleware";
-import { UserService } from "../user/user.service";
 import { UserModule } from "../user/user.module";
-import { TwilioModule } from "../twilio/twilio.module";
-import { ConfigModule } from "@nestjs/config";
+
 
 @Module({
   imports: [

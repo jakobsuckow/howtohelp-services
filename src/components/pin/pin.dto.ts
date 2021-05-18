@@ -4,7 +4,7 @@ import { IsArray, IsEmail, IsNotEmpty } from "class-validator";
 import { Trait, Type } from "./pin.entity";
 
 export class CreatePinDto {
-  @ApiProperty({ type: String, nullable: false, example: "Jakob" })
+  @ApiProperty({ type: String, nullable: false, example: "Lorem Ipsum" })
   @IsNotEmpty()
   name: string;
 
@@ -14,7 +14,7 @@ export class CreatePinDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ nullable: false, example: "Manfred-von-richthofen-strasse 20,12101, Berlin" })
+  @ApiProperty({ nullable: false, example: "Hardenbergstraße 33, 10623 Berlin" })
   @IsNotEmpty()
   @Expose()
   address: string;

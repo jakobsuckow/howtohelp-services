@@ -1,5 +1,5 @@
-import { Body, Controller, Get, HttpCode, Param, Post, Query } from "@nestjs/common";
-import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Get, HttpCode, Param, Post } from "@nestjs/common";
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { User } from "../user/user.decorator";
 import { UserEntity } from "../user/user.entity";
 import { CreateMessageDto } from "./message.dto";

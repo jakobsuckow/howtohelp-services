@@ -15,6 +15,7 @@ import { ConfigModule } from "@nestjs/config";
 import { TwilioModule } from "./components/twilio/twilio.module";
 import { MessageModule } from "./components/message/message.module";
 import { MessageGateway } from "./components/message/message.gateway";
+import { CryptoModule } from './components/crypto/crypto.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { MessageGateway } from "./components/message/message.gateway";
     UserModule,
     TwilioModule,
     MessageModule,
+    CryptoModule,
   ],
   controllers: [AppController],
   providers: [AppService, SegmentService, MessageGateway],
