@@ -4,7 +4,6 @@ import { Repository } from "typeorm";
 import { EmailDto, VerificationDto } from "./user.dto";
 import { UserEntity } from "./user.entity";
 import * as jwt from "jsonwebtoken";
-import * as bcrypt from "bcrypt";
 import { ConfigService } from "@nestjs/config";
 import { TwilioService } from "../twilio/twilio.service";
 import { LoggerService } from "../logger/logger.service";

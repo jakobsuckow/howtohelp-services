@@ -9,7 +9,6 @@ import {
 } from "typeorm";
 import { MessageEntity } from "../message/message.entity";
 import { PinEntity } from "../pin/pin.entity";
-import * as bcrypt from "bcrypt";
 import { CryptoService } from "../crypto/crypto.service";
 
 export enum Role {

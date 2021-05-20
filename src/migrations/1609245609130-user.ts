@@ -1,6 +1,5 @@
 import { Role } from "src/components/user/user.entity";
 import { getRepository, MigrationInterface, QueryRunner } from "typeorm";
-import * as bcrypt from "bcrypt";
 import { CryptoService } from "src/components/crypto/crypto.service";
 export class user1609245609130 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
