@@ -1,5 +1,6 @@
 import { forwardRef, MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { CryptoService } from "../crypto/crypto.service";
 import { LocationService } from "../location/location.service";
 import { LoggerModule } from "../logger/logger.module";
 import { SegmentService } from "../segment/segment.service";
@@ -28,6 +29,7 @@ import { PinService } from "./pin.service";
     UserService,
     TwilioService,
     SendgridService,
+    CryptoService,
   ],
   exports: [PinService],
 })

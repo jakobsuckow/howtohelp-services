@@ -9,6 +9,7 @@ import { ConfigService } from "@nestjs/config";
 import { TwilioService } from "../twilio/twilio.service";
 import { LoggerService } from "../logger/logger.service";
 import { Role } from "../roles/roles.enum";
+import { CryptoService } from "../crypto/crypto.service";
 
 @Injectable()
 export class UserService {
@@ -17,7 +18,8 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
     private readonly configService: ConfigService,
     private readonly twilioService: TwilioService,
-    private readonly loggerService: LoggerService
+    private readonly loggerService: LoggerService,
+    private readonly cryptoService: CryptoService
   ) {}
   async upsert(data: any): Promise<UserEntity> {
     return await this.userRepository.save(data);
@@ -36,12 +38,12 @@ export class UserService {
   }
 
   private async userExistsCheck({ email }: { email: string }): Promise<UserEntity> {
-    const user = this.userRepository
+    this.loggerService.log(email);
+    const hash = await this.cryptoService.hash(email);
+    this.loggerService.log(hash);
+    const user = await this.userRepository
       .createQueryBuilder("user")
-      .where("user.email LIKE :email", {
-        email: `%${email ? email : ""}%`,
-      })
-      .leftJoinAndSelect("user.pins", "pins")
+      .where("user.email = :hash", { hash })
       .getOne();
     if (user) return user;
   }

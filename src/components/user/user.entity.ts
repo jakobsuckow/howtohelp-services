@@ -10,8 +10,7 @@ import {
 import { MessageEntity } from "../message/message.entity";
 import { PinEntity } from "../pin/pin.entity";
 import * as bcrypt from "bcrypt";
-import { Logger } from "../logger/logger.decorator";
-import { LoggerService } from "../logger/logger.service";
+import { CryptoService } from "../crypto/crypto.service";
 
 export enum Role {
   Admin = "admin",
@@ -23,8 +22,8 @@ export enum Role {
 export class UserEntity extends BaseEntity {
   @BeforeInsert()
   async hashEmail() {
-    console.log(this.email);
-    if (this.email) this.email = await bcrypt.hash(this.email, 10);
+    const cryptoService = new CryptoService();
+    if (this.email) this.email = await cryptoService.hash(this.email);
   }
 
   @PrimaryGeneratedColumn("uuid")

@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import * as crypto from "crypto";
-import { Hash } from "./crypto.interface";
 
 @Injectable()
 export class CryptoService {
@@ -9,31 +8,34 @@ export class CryptoService {
   ivLength: number;
   algorithm: string;
   constructor() {
-    this.key = process.env.CRYPTO_KEY as string;
-    this.iv = crypto.randomBytes(16);
+    this.key = process.env.CRYPTO_KEY;
     this.algorithm = "aes-256-ctr";
+    this.ivLength = 16;
   }
 
-  public async encrypt(string: string): Promise<Hash> {
-    const cipher = crypto.createCipheriv(this.algorithm, this.key, this.iv);
+  public async encrypt(string: string): Promise<string> {
+    let iv = crypto.randomBytes(this.ivLength);
+    let cipher = crypto.createCipheriv(this.algorithm, Buffer.from(this.key), iv);
+    let encrypted = cipher.update(string);
 
-    const encrypted = Buffer.concat([cipher.update(string), cipher.final()]);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
 
-    return {
-      iv: this.iv.toString("hex"),
-      content: encrypted.toString("hex"),
-    } as Hash;
+    return iv.toString("hex") + ":" + encrypted.toString("hex");
   }
 
-  public async decrypt(hash: Hash): Promise<string> {
-    console.log(hash);
-    const decipher = crypto.createDecipheriv(this.algorithm, this.key, Buffer.from(hash.iv, "hex"));
+  public async decrypt(string: string): Promise<string> {
+    let textParts = string.split(":");
+    let iv = Buffer.from(textParts.shift(), "hex");
+    let encryptedText = Buffer.from(textParts.join(":"), "hex");
+    let decipher = crypto.createDecipheriv(this.algorithm, Buffer.from(this.key), iv);
+    let decrypted = decipher.update(encryptedText);
 
-    const decrpyted = Buffer.concat([
-      decipher.update(Buffer.from(hash.content, "hex")),
-      decipher.final(),
-    ]);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
 
-    return decrpyted.toString();
+    return decrypted.toString();
+  }
+
+  public async hash(string: string): Promise<string> {
+    return crypto.createHmac("sha1", this.key).update(string).digest("hex");
   }
 }

@@ -1,11 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { MailDataRequired, send, setApiKey } from "@sendgrid/mail";
+import { Logger } from "../logger/logger.decorator";
 import { LoggerService } from "../logger/logger.service";
 
 @Injectable()
 export class SendgridService {
   constructor(
+    @Logger("Sendgrid")
     private readonly loggerService: LoggerService,
     private readonly configService: ConfigService
   ) {
