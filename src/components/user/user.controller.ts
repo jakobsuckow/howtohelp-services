@@ -45,12 +45,13 @@ export class UserController {
   @ApiResponse({ description: "returns JWT for verified login attempt" })
   async verify(@Body() method: VerificationDto, @Res({ passthrough: true }) res: Response) {
     const { accessToken, refreshToken } = await this.userService.verifyLogin(method);
-
-    res.cookie("accessToken", accessToken, {
-      expires: new Date(new Date().getTime() + 30 * 1000),
-      // sameSite: "strict",
-      // httpOnly: true,
-    });
+    res
+      .set("Access-Control-Allow-Origin", "http://localhost:3000")
+      .cookie("accessToken", accessToken, {
+        expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
+        sameSite: "strict",
+        httpOnly: true,
+      });
 
     return {
       accessToken,
