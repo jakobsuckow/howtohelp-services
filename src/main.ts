@@ -13,7 +13,10 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.enableCors({
-    origin: ["http://localhost:3000", "https://howtohelp.guide"],
+    origin: [
+      "http://localhost:3000",
+      "https://howtohelp.guide,https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
+    ],
     credentials: true,
   });
   app.useGlobalPipes(new ValidationPipe());
