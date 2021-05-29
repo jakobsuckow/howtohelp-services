@@ -61,10 +61,10 @@ export class UserController {
     this.loggerService.log(`origin: ${origin}`);
 
     res
-      .set("Access-Control-Allow-Origin", [
-        "http://localhost:3000",
-        "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
-      ])
+      .set(
+        "Access-Control-Allow-Origin",
+        "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app"
+      )
       .cookie("accessToken", accessToken, {
         expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
         sameSite: "strict",
