@@ -15,7 +15,8 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       "http://localhost:3000",
-      "https://howtohelp.guide,https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
+      "https://howtohelp.guide",
+      "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
     ],
     credentials: true,
   });
