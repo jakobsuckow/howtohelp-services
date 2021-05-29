@@ -17,6 +17,7 @@ async function bootstrap() {
       "http://localhost:3000",
       "https://howtohelp.guide",
       "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
+      "https://howtohelp-next-923t3hxsl-jakobsuckow941.vercel.app",
     ],
     credentials: true,
   });
