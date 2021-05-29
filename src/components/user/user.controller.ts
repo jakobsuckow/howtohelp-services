@@ -59,6 +59,13 @@ export class UserController {
     };
   }
 
+  @Get("logout")
+  @HttpCode(200)
+  @ApiResponse({ description: "Logs out user" })
+  async logout(@Res({ passthrough: true }) res: Response) {
+    res.status(200).clearCookie("accessToken");
+  }
+
   @Get("all")
   @HttpCode(200)
   @ApiBearerAuth()
