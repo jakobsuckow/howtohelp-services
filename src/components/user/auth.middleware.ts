@@ -26,13 +26,15 @@ export class AuthMiddleware implements NestMiddleware {
       (authHeaders as string).split(" ")[1]
     ) {
       const token = (authHeaders as string).split(" ")[1];
+      this.loggerService.log(token);
 
       if (!token) {
         throw new HttpException("Token missing", 403);
       }
       let decoded = null;
+      this.loggerService.log(this.secret);
       try {
-        decoded = jwt.verify(token, this.configService.get("JWT_SECRET"));
+        decoded = jwt.verify(token, this.secret);
         const user = await this.userService.findOne(decoded.id);
         req["user"] = user;
         next();
