@@ -60,7 +60,7 @@ export class UserController {
     this.loggerService.log(`host: ${host}`);
     this.loggerService.log(`origin: ${origin}`);
 
-    res.set("Access-Control-Allow-Origin", "*").cookie("accessToken", accessToken, {
+    res.set("Access-Control-Allow-Origin", origin).cookie("accessToken", accessToken, {
       expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
       sameSite: "strict",
       httpOnly: true,
