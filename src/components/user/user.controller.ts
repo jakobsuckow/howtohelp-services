@@ -62,10 +62,11 @@ export class UserController {
     this.loggerService.log(`origin: ${origin}`);
     this.loggerService.log(fullUrl);
 
-    res.set("Access-Control-Allow-Origin", fullUrl).cookie("accessToken", accessToken, {
+    res.set("Access-Control-Allow-Origin", origin).cookie("accessToken", accessToken, {
       expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
-      sameSite: "strict",
+      sameSite: "none",
       httpOnly: true,
+      secure: true,
     });
 
     return {
