@@ -64,6 +64,7 @@ export class UserController {
       .cookie("accessToken", accessToken, {
         expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
         sameSite: "none",
+        domain: origin,
         secure: true,
         httpOnly: false,
       });
