@@ -55,7 +55,7 @@ export class UserService {
         email: user.email,
         roles: user.roles,
       },
-      this.configService.get("JWT_SECRET"),
+      this.configService.get("JWT_ACCESS_SECRET"),
       {
         expiresIn: "2h",
       }

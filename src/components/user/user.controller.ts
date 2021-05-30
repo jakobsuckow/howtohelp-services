@@ -55,18 +55,14 @@ export class UserController {
     @Res({ passthrough: true }) res: Response
   ) {
     const { accessToken, refreshToken } = await this.userService.verifyLogin(method);
-    const host = req.get("host");
     const origin = req.get("origin");
-    const fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-    this.loggerService.log(`host: ${host}`);
     this.loggerService.log(`origin: ${origin}`);
-    this.loggerService.log(fullUrl);
 
     res.set("Access-Control-Allow-Origin", origin).cookie("accessToken", accessToken, {
       expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
       sameSite: "none",
-      httpOnly: true,
       secure: true,
+      httpOnly: true,
     });
 
     return {
