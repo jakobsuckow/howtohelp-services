@@ -62,7 +62,7 @@ export class UserController {
       .set("Access-Control-Allow-Credentials", "true")
       .set("Access-Control-Allow-Origin", origin)
       .cookie("accessToken", accessToken, {
-        expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
+        expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 60 * 2),
         sameSite: "none",
         domain: origin,
         secure: true,
