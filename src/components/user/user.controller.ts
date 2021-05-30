@@ -65,6 +65,7 @@ export class UserController {
         expires: new Date(new Date().getTime() + 60 * 1000 * 60 * 2),
         sameSite: "none",
         secure: true,
+        httpOnly: false,
       });
 
     return {
