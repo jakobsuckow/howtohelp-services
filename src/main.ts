@@ -17,6 +17,7 @@ async function bootstrap() {
     origin: [
       "http://localhost:3000",
       "https://howtohelp.guide",
+      "https://www.howtohelp.guide",
       "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
       "https://howtohelp-next-923t3hxsl-jakobsuckow941.vercel.app",
       "https://howtohelp-dev.vercel.app",
