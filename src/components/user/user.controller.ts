@@ -64,7 +64,7 @@ export class UserController {
       .cookie("accessToken", accessToken, {
         maxAge: 60 * 60 * 2,
         sameSite: "none",
-        domain: process.env.NODE_ENV === "development" ? "localhost" : "howtohelp.guide",
+        // domain: process.env.NODE_ENV === "development" ? "localhost" : "howtohelp.guide",
         secure: true,
         httpOnly: false,
       });
