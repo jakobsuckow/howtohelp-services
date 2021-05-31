@@ -15,7 +15,7 @@ import { ConfigModule } from "@nestjs/config";
 import { TwilioModule } from "./components/twilio/twilio.module";
 import { MessageModule } from "./components/message/message.module";
 import { MessageGateway } from "./components/message/message.gateway";
-import { CryptoModule } from './components/crypto/crypto.module';
+import { CryptoModule } from "./components/crypto/crypto.module";
 
 @Module({
   imports: [
@@ -35,7 +35,7 @@ import { CryptoModule } from './components/crypto/crypto.module';
         "../node_modules/nestjs-admin/**/*.entity.js",
       ],
       migrations: ["dist/migrations/**.js"],
-      synchronize: process.env.NODE_ENV === "production"? false : true,
+      synchronize: true,
       autoLoadEntities: true,
       ssl: {
         rejectUnauthorized: false,
