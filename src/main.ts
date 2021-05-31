@@ -7,6 +7,16 @@ import { ValidationPipe } from "@nestjs/common";
 import * as cookieParser from "cookie-parser";
 import { NestExpressApplication } from "@nestjs/platform-express";
 
+const WhiteList =
+  process.env.NODE_ENV === "production"
+    ? ["https://howtohelp.guide", "https://www.howtohelp.guide"]
+    : [
+        "http://localhost:3000",
+        "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
+        "https://howtohelp-next-923t3hxsl-jakobsuckow941.vercel.app",
+        "https://howtohelp-dev.vercel.app",
+      ];
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new LoggerService(),
@@ -14,14 +24,7 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.enableCors({
-    origin: [
-      "http://localhost:3000",
-      "https://howtohelp.guide",
-      "https://www.howtohelp.guide",
-      "https://howtohelp-next-jfjzbc54b-jakobsuckow941.vercel.app",
-      "https://howtohelp-next-923t3hxsl-jakobsuckow941.vercel.app",
-      "https://howtohelp-dev.vercel.app",
-    ],
+    origin: WhiteList,
     credentials: true,
   });
   app.set("trust proxy", 1);
