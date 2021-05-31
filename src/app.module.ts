@@ -35,7 +35,7 @@ import { CryptoModule } from "./components/crypto/crypto.module";
         "../node_modules/nestjs-admin/**/*.entity.js",
       ],
       migrations: ["dist/migrations/**.js"],
-      synchronize: true,
+      synchronize: process.env.NODE_ENV === "production" ? false : true,
       autoLoadEntities: true,
       ssl: {
         rejectUnauthorized: false,

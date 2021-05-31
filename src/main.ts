@@ -28,6 +28,7 @@ async function bootstrap() {
     credentials: true,
   });
   app.set("trust proxy", 1);
+  app.enable("trust proxy");
   app.useGlobalPipes(new ValidationPipe());
 
   app.setGlobalPrefix("api/v1");
