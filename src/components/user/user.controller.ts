@@ -64,7 +64,6 @@ export class UserController {
       .cookie("accessToken", accessToken, {
         maxAge: 60 * 60 * 2,
         sameSite: "none",
-        domain: origin,
         secure: true,
         httpOnly: false,
       });
