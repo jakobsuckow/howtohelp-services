@@ -24,8 +24,8 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.enableCors({
-    origin: WhiteList,
-    credentials: true,
+    // origin: WhiteList,
+    // credentials: true,
   });
   app.set("trust proxy", 1);
   app.enable("trust proxy");

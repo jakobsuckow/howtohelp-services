@@ -58,16 +58,16 @@ export class UserController {
     const origin = req.get("origin");
     this.loggerService.log(`origin: ${origin}`);
 
-    res
-      .set("Access-Control-Allow-Credentials", "true")
-      .set("Access-Control-Allow-Origin", origin)
-      .cookie("accessToken", accessToken, {
-        maxAge: 60 * 60 * 2,
-        sameSite: "none",
-        domain: process.env.NODE_ENV === "development" ? "localhost" : ".howtohelp.guide",
-        secure: true,
-        httpOnly: false,
-      });
+    // res
+    //   .set("Access-Control-Allow-Credentials", "true")
+    //   .set("Access-Control-Allow-Origin", origin)
+    //   .cookie("accessToken", accessToken, {
+    //     maxAge: 60 * 60 * 2,
+    //     sameSite: "none",
+    //     domain: process.env.NODE_ENV === "development" ? "localhost" : ".howtohelp.guide",
+    //     secure: true,
+    //     httpOnly: false,
+    //   });
 
     return {
       accessToken,
